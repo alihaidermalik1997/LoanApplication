@@ -17,10 +17,14 @@ class SignUpSerializer(serializers.ModelSerializer):
         model = User
         fields = ['email', 'username', 'password']
 
+    def is_first_user():
+        return not User.objects.exists()
+
     def create(self, validated_data):
         user = User.objects.create(
             email=validated_data['email'],
             username=validated_data['username'],
+            is_staff=self.is_first_user()
         )
         user.set_password(validated_data['password'])
         user.save()
