@@ -51,3 +51,6 @@ To run the cron job that notifies users before two days of the due date, use the
    ```   
 ### API Postman Collection
 A Postman collection containing the API endpoints and sample requests is provided in the repository.
+
+### NOTE
+I have created a logic that if there is no user in the system then the first user to signup/register is a manager
