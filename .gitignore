@@ -1,0 +1,29 @@
+# Django project files
+*.pyc
+*.pyo
+__pycache__/
+*.sqlite3
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Development files
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Project-specific files
+/staticfiles/
+/media/
+
+# System files
+.DS_Store
