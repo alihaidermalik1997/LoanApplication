@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "77f669f1-0be0-410a-a090-38edf3077fc6",
+		"name": "LoanRESTAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signup API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mr.alihaidermalik@gmail.com\",\n    \"username\": \"alihaider\",\n    \"password\": \"alihaider\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/signup/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"signup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signin API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mr.alihaidermalik@gmail.com\",\n    \"password\": \"alihaider\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/user/signin/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"signin",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Loan Application",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 500,\n    \"due_date\": \"2023-07-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/loan-application/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"loan-application",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Loan Application Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2OTE2NjE2LCJpYXQiOjE2ODY5MTYzMTYsImp0aSI6IjExMTlhNGQwNTJkMjQ5NDVhNzE2Y2Q5ZTgxNzgzYzg1IiwidXNlcl9pZCI6MX0.u4PCb4m12d29G3b8-S39i3qCc2WiZb1USMiOq0ahpg0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/last-loan-application/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"last-loan-application",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Manage Locan Application",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2OTE2NjE2LCJpYXQiOjE2ODY5MTYzMTYsImp0aSI6IjExMTlhNGQwNTJkMjQ5NDVhNzE2Y2Q5ZTgxNzgzYzg1IiwidXNlcl9pZCI6MX0.u4PCb4m12d29G3b8-S39i3qCc2WiZb1USMiOq0ahpg0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"approved\",\n    \"comment\": \"approved\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/loan-application/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"loan-application",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Block Unblock User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2OTE3MTk1LCJpYXQiOjE2ODY5MTY4OTUsImp0aSI6IjAyYzA3ZDBkYWZkZjQwOTk4ZGRhYzA3YTY5ZWYzZGIzIiwidXNlcl9pZCI6MX0.zm0WYjFMQqDK1-3i7cwj_1g5evT1dr29pkPXBMyAC4E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"is_blocked\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/manage_user/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"manage_user",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
