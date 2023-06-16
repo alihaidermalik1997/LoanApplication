@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from user.views import SignUpView, SignInView
-from application.views import LoanApplicationCreateView
+from application.views import LoanApplicationCreateView, LoanApplicationDetailView
 
 
 
@@ -25,5 +25,5 @@ urlpatterns = [
     path('api/user/signup/', SignUpView.as_view(), name='signup'),
     path('api/user/signin/', SignInView.as_view(), name='signin'),
     path('api/loan-application/', LoanApplicationCreateView.as_view(), name='loan-application-create'),
-
+    path('api/last-loan-application/', LoanApplicationDetailView.as_view(), name='loan-application-create'),
 ]

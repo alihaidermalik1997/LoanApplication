@@ -5,6 +5,8 @@ from application.models import Application
 from application.serializers import LoanApplicationSerializer
 from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import RetrieveAPIView
+
 
 class LoanApplicationCreateView(APIView):
     permission_classes = [IsAuthenticated]
@@ -28,3 +30,13 @@ class LoanApplicationCreateView(APIView):
             serializer.save(user=user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoanApplicationDetailView(RetrieveAPIView):
+    queryset = Application.objects.all()
+    serializer_class = LoanApplicationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+        return Application.objects.filter(user=user).latest('created_date')
