@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from user.views import SignUpView, SignInView
+from user.views import SignUpView, SignInView, ManageUserView
 from application.views import LoanApplicationCreateView, LoanApplicationDetailView, ManageLoanApplicationView
 
 
@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/loan-application/', LoanApplicationCreateView.as_view(), name='loan-application-create'),
     path('api/last-loan-application/', LoanApplicationDetailView.as_view(), name='loan-application-get'),
     path('api/loan-application/<int:id>/', ManageLoanApplicationView.as_view(), name='manage-loan-application'),
+    path('api/manage_user/<int:id>/', ManageUserView.as_view(), name='manage-user'),
 ]

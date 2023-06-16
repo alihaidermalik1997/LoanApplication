@@ -25,3 +25,4 @@ class ManageLoanApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ['comment', 'status']
+

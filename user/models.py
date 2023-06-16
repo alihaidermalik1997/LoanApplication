@@ -52,6 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         help_text='Specific permissions for this user.',
         verbose_name='user permissions',
     )
+    is_blocked = models.BooleanField(default=False)
 
     def __str__(self):
         return self.email

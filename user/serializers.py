@@ -44,3 +44,9 @@ class SignInSerializer(serializers.Serializer):
             'access': str(refresh.access_token),
         }
         return data
+
+
+class BlockUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['is_blocked']

@@ -19,6 +19,9 @@ class LoanApplicationCreateView(APIView):
         today = timezone.now().date()
 
         # Check if user has already created a loan application today
+        if user.is_blocked:
+            return Response({'error': 'You are blocked.'}, status=status.HTTP_400_BAD_REQUEST)
+
         existing_application = Application.objects.filter(user=user, created_date=today)
         if existing_application.exists():
             return Response({'error': 'You have already created a loan application today.'}, status=status.HTTP_400_BAD_REQUEST)
