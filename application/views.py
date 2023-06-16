@@ -2,10 +2,13 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from application.models import Application
-from application.serializers import LoanApplicationSerializer
+from application.serializers import LoanApplicationSerializer, ManageLoanApplicationSerializer
 from django.utils import timezone
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import RetrieveAPIView
+from LoanRESTAPI.permissions import IsManagerPermission
+from rest_framework.generics import UpdateAPIView
+
 
 
 class LoanApplicationCreateView(APIView):
@@ -40,3 +43,13 @@ class LoanApplicationDetailView(RetrieveAPIView):
     def get_object(self):
         user = self.request.user
         return Application.objects.filter(user=user).latest('created_date')
+    
+
+
+class ManageLoanApplicationView(UpdateAPIView):
+    queryset = Application.objects.all()
+    serializer_class = ManageLoanApplicationSerializer
+    permission_classes = [IsManagerPermission]
+    lookup_field = 'id'
+
+
